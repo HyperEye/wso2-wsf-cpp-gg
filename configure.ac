@@ -221,9 +221,10 @@ UTILINC="-I$abs_top_builddir/wsf_c/axis2c/util/include"
 NEETHIINC="-I$abs_top_builddir/wsf_c/axis2c/neethi/include"
 
 case $host in
-  *mingw* | *msys*)
+  *mingw*)
     VERSION_INFO="-avoid-version"
     CFLAGS="$CFLAGS -DWIN32 -D_WINDOWS -D_MBCS -DAXIS2_DECLARE_EXPORT -D_CRT_SECURE_NO_DEPRECATE -D_CRT_SECURE_NO_WARNINGS"
+    CPPFLAGS="$CPPFLAGS -DWIN32 -D_WINDOWS -D_MBCS -DAXIS2_DECLARE_EXPORT -D_CRT_SECURE_NO_DEPRECATE -D_CRT_SECURE_NO_WARNINGS"
     LDFLAGS="$LDFLAGS -no-undefined"
   ;;
   *)

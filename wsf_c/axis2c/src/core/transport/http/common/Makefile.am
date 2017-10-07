@@ -14,8 +14,10 @@
 # limitations under the License.
 lib_LTLIBRARIES = libaxis2_http_common.la
 
-libaxis2_http_common_la_LIBADD=$(top_builddir)/util/src/libaxutil.la\
-                                 $(top_builddir)/src/core/transport/http/util/libaxis2_http_util.la
+libaxis2_http_common_la_LIBADD=$(top_builddir)/util/src/libaxutil.la \
+                               $(top_builddir)/src/core/context/libaxis2_context.la \
+			       $(top_builddir)/src/core/description/libaxis2_description.la \
+                               $(top_builddir)/src/core/transport/http/util/libaxis2_http_util.la
 
 libaxis2_http_common_la_SOURCES = http_header.c\
                                   http_out_transport_info.c\

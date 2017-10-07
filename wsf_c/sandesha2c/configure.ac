@@ -69,6 +69,19 @@ AC_ARG_WITH(axis2,
 AXIOMINC="-I$abs_top_builddir/../axis2c/axiom/include"
 UTILINC="-I$abs_top_builddir/../axis2c/util/include"
 NEETHIINC="-I$abs_top_builddir/../axis2c/neethi/include"
+
+case $host in
+  *mingw* | *msys*)
+    VERSION_INFO="-avoid-version"
+    CFLAGS="$CFLAGS -DWIN32 -D_WINDOWS -D_MBCS -DAXIS2_DECLARE_EXPORT -D_CRT_SECURE_NO_DEPRECATE -D_CRT_SECURE_NO_WARNINGS"
+    LDFLAGS="$LDFLAGS -no-undefined"
+    hardcode_libdir_flag_spec=
+  ;;
+  *)
+    test "$GCC" = "yes" && CFLAGS="$CFLAGS -Wno-unused-but-set-variable"
+  ;;
+esac
+
 AC_SUBST(AXIS2INC)
 AC_SUBST(AXIOMINC)
 AC_SUBST(UTILINC)

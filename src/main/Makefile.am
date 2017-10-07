@@ -22,6 +22,7 @@ libwso2_wsf_la_SOURCES= WSFault.cpp \
 
 libwso2_wsf_la_LIBADD = ../../wsf_c/axis2c/util/src/libaxutil.la \
                         ../../wsf_c/axis2c/neethi/src/libneethi.la \
+                        ../../wsf_c/axis2c/src/core/engine/libaxis2_engine.la \
                         ../../wsf_c/axis2c/axiom/src/om/libaxis2_axiom.la \
 			-lpthread
 

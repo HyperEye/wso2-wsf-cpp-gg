@@ -40,7 +40,6 @@ typedef struct options
       int has_arg;
 }wsclient_options_t;
 
-
 /* this enum and above array mapped there */
 enum cmd_options_em
 {
@@ -49,7 +48,7 @@ enum cmd_options_em
       SOAP,
       SOAP_OLD,
       SEND_ONLY,
-      ACTION,
+      _ACTION,
       SOAP_DUMP,
       SOAP_OUT,
       SOAP_HEADER, /* {"soap-header", 0, required_argument}, */

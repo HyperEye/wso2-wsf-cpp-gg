@@ -14,7 +14,10 @@ librampart_la_SOURCES = rampart_crypto_util.c \
 
 librampart_la_LDFLAGS = -version-info $(VERSION_NO)
 
-librampart_la_LIBADD  = ../omxmlsec/libomxmlsec.la \
+librampart_la_LIBADD  = ../../../axis2c/src/core/engine/libaxis2_engine.la \
+                     ../../../axis2c/util/src/libaxutil.la \
+                     ../../../axis2c/axiom/src/om/libaxis2_axiom.la \
+                     ../omxmlsec/libomxmlsec.la \
                      ../secconv/libsecconv.la \
                      ../trust/libtrust.la \
                      @OPENSSLLIB@ \

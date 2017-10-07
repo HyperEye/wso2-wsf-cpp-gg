@@ -12,5 +12,5 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-SUBDIRS = parser attachments soap util ${XPATH_DIR} om 
+SUBDIRS = parser attachments soap util om ${XPATH_DIR}
 

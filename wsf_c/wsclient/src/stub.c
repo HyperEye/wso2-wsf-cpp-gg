@@ -303,7 +303,7 @@ wsclient_svc_option (axis2_svc_client_t *svc_client,
                         }
 					}
 					break;
-					case ACTION:
+					case _ACTION:
 					{
 						is_soap_enabled = 1;
 						is_action = 1;
