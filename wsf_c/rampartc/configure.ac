@@ -126,6 +126,18 @@ OPENSSLINC=$opensslinc
 OPENSSLLIB=$openssllib
 UTILINC=$axis2_utilinc
 VERSION_NO="3:0:3"
+
+case $host in
+  *mingw* | *msys*)
+    VERSION_INFO="-avoid-version"
+    CFLAGS="$CFLAGS -DWIN32 -D_WINDOWS -D_MBCS -DAXIS2_DECLARE_EXPORT -D_CRT_SECURE_NO_DEPRECATE -D_CRT_SECURE_NO_WARNINGS"
+    LDFLAGS="$LDFLAGS -no-undefined"
+  ;;
+  *)
+    test "$GCC" = "yes" && CFLAGS="$CFLAGS -Wno-unused-but-set-variable"
+  ;;
+esac
+
 AC_SUBST(AXIS2INC)
 AC_SUBST(AXIS2LIB)
 AC_SUBST(AXIOMINC)

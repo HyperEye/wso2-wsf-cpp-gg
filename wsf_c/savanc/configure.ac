@@ -211,6 +211,17 @@ REGISTRYINC=$registryinc
 XPATHINC=$xpathinc
 ESBPUBINC=$esbpubinc
 
+case $host in
+  *mingw* | *msys*)
+    VERSION_INFO="-avoid-version"
+    CFLAGS="$CFLAGS -DWIN32 -D_WINDOWS -D_MBCS -DAXIS2_DECLARE_EXPORT -D_CRT_SECURE_NO_DEPRECATE -D_CRT_SECURE_NO_WARNINGS"
+    LDFLAGS="$LDFLAGS -no-undefined"
+  ;;
+  *)
+    test "$GCC" = "yes" && CFLAGS="$CFLAGS -Wno-unused-but-set-variable"
+  ;;
+esac
+
 AC_SUBST(REGISTRYINC)
 AC_SUBST(XPATHINC)
 AC_SUBST(ESBPUBINC)

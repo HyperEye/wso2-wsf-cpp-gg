@@ -121,6 +121,14 @@ AC_ARG_ENABLE(libxml2, [  --enable-libxml2
 
 UTILINC=$axis2_utilinc
 
+case $host in
+  *mingw* | *msys*)
+    VERSION_INFO="-avoid-version"
+    CFLAGS="$CFLAGS -DWIN32 -D_WINDOWS -D_MBCS -DAXIS2_DECLARE_EXPORT -D_CRT_SECURE_NO_DEPRECATE -D_CRT_SECURE_NO_WARNINGS"
+    LDFLAGS="$LDFLAGS -no-undefined"
+  ;;
+esac
+
 AC_SUBST(UTILINC)
 AC_SUBST(TESTDIR)
 AC_SUBST(WRAPPER_DIR)

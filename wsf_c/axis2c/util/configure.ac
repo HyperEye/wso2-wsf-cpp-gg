@@ -155,10 +155,18 @@ alpha*)
   ;;
 esac
 
+PLATFORM=unix
+
 case "${host_os}" in
 cygwin)
   cygwin=yes
   no_undefined=yes
+  ;;
+mingw* | msys*)
+  PLATFORM=windows
+  CFLAGS="$CFLAGS -DWIN32 -D_WINDOWS -D_MBCS -DAXIS2_DECLARE_EXPORT -D_CRT_SECURE_NO_DEPRECATE -D_CRT_SECURE_NO_WARNINGS"
+  LIBS="$LIBS -lrpcrt4 -lws2_32 -lkernel32"
+  LDFLAGS="$LDFLAGS -no-undefined"
   ;;
 darwin*)
   darwin=yes
@@ -271,18 +279,30 @@ ZLIBINC=$zlibinc
 ZLIBLIBS=$zliblibs
 VERSION_NO="7:0:7"
 
+case $host in
+  *mingw* | *msys*)
+    VERSION_INFO="-avoid-version"
+  ;;
+  *)
+    test "$GCC" = "yes" && CFLAGS="$CFLAGS -Wno-unused-but-set-variable"
+  ;;
+esac
+
 AC_SUBST(VERSION_NO)
 AC_SUBST(UTILINC)
 AC_SUBST(ZLIBINC)
 AC_SUBST(ZLIBLIBS)
 AC_SUBST(ZLIBBUILD)
+AC_SUBST(PLATFORM)
 AC_SUBST(GUTHTHILA_DIR)
 AC_SUBST(GUTHTHILA_LIBS)
 AC_SUBST(TESTDIR)
 
 AC_CONFIG_FILES([Makefile \
     src/Makefile \
+    src/platforms/Makefile \
     src/platforms/unix/Makefile \
+    src/platforms/windows/Makefile \
     src/minizip/Makefile \
     include/Makefile \
     test/Makefile \

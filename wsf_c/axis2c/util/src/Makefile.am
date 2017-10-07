@@ -12,7 +12,7 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-SUBDIRS = platforms/unix @ZLIBBUILD@
+SUBDIRS = platforms @ZLIBBUILD@
 lib_LTLIBRARIES = libaxutil.la
 libaxutil_la_SOURCES = hash.c \
                         allocator.c \
@@ -54,7 +54,7 @@ libaxutil_la_SOURCES = hash.c \
 			http_chunked_stream.c \
                         digest_calc.c 
                         
-libaxutil_la_LIBADD =	$(top_builddir)/src/platforms/unix/libaxis2_unix.la \
+libaxutil_la_LIBADD =	$(top_builddir)/src/platforms/@PLATFORM@/libaxis2_@PLATFORM@.la \
 			-lpthread \
 			@ZLIBLIBS@
 
