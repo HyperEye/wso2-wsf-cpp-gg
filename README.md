@@ -36,6 +36,17 @@ To build the Axis2/C samples :
     make
     make install
 
+### Windows MSYS/MinGW (32-bit and 64-bit)
+
+Successfully tested on Windows 10 and msys2 with the following configure command :
+
+    ./autogen.sh
+    ./configure --disable-option-checking --prefix=<PREFIX> --enable-openssl --with-openssl --with-axis2=`pwd`/wsf_c/axis2c/include --enable-shared --disable-static --disable-sandesha --host=mingw32 --build=mingw32
+    make
+    make install
+
+Even if the mingw compiler is 64-bit the host and build should still be mingw32.
+
 ### Windows
 
 Just use `build.bat` and follow `README.INSTALL.WINDOWS`.
